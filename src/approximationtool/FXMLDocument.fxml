@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections ?>
+<?import approximationtool.*?>
+<?import javafx.scene.control.cell.*?>
+
+<BorderPane id="AnchorPane" prefHeight="600.0" prefWidth="807.0" snapToPixel="false" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="approximationtool.FXMLDocumentController">
+   <children>
+      <TitledPane animated="false" snapToPixel="false" text="Approximation method">
+         <content>
+            <AnchorPane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="0.0" />
+         </content>
+      </TitledPane>
+      <Button fx:id="button" layoutY="101.0" text="Click Me!" />
+   </children>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="538.0" prefWidth="805.0">
+               <children>
+                  <TitledPane layoutX="23.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" text="Approximation Method">
+                     <content>
+                        <VBox prefHeight="107.0" prefWidth="198.0">
+                           <children>
+                               <ChoiceBox fx:id="choiceBox" prefHeight="31.0" prefWidth="175.0" value="Least-Squares Method"> 
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Least-Squares Method" />
+                                        <String fx:value="LaGrange Method" />
+                                    </FXCollections>
+                                </items>
+                               </ChoiceBox>
+                              <Separator orientation="VERTICAL" prefHeight="36.0" prefWidth="176.0" visible="false" />
+                              <HBox prefHeight="25.0" prefWidth="174.0">
+                                 <children>
+                                    <Label prefHeight="36.0" prefWidth="113.0" text="Order :" textAlignment="CENTER" />
+                                    <ChoiceBox prefHeight="31.0" prefWidth="155.0" value="First Order">
+                                        <items><FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="First Order" />
+                                            <String fx:value="Second Order" />
+                                        </FXCollections>
+                                        </items>
+                                    </ChoiceBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Separator orientation="VERTICAL" prefHeight="9.0" prefWidth="174.0" visible="false" />
+                                 </children>
+                              </HBox>
+                              <Button fx:id="approximateButton" mnemonicParsing="false" onAction="#approximate" prefHeight="45.0" prefWidth="174.0" text="Approximate" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <TitledPane layoutX="23.0" layoutY="233.0" prefHeight="200.0" prefWidth="200.0" text="Data">
+                     <content>
+                        <TableView fx:id="tableView" editable="true" fixedCellSize="0.0" prefHeight="92.0" prefWidth="200.0">
+                          <columns>
+                              <TableColumn fx:id="Xs" prefWidth="104.0" text="X">
+                                  <cellValueFactory><PropertyValueFactory property="x" /></cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="Ys" prefWidth="96.0" text="Y">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="y" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                          </columns>
+                          <items>
+                              <FXCollections fx:factory="observableArrayList">
+
+                              </FXCollections>
+                          </items>
+                        </TableView>
+                     </content>
+                  </TitledPane>
+                  <Button layoutX="131.0" layoutY="441.0" mnemonicParsing="false" onAction="#addPoint" prefHeight="31.0" prefWidth="94.0" text="Add Point" />
+                  <TextField layoutX="23.0" layoutY="441.0" prefHeight="31.0" prefWidth="41.0" promptText="x" fx:id="xTextField" />
+                  <TextField fx:id="yTextField" layoutX="81.0" layoutY="441.0" prefHeight="31.0" prefWidth="42.0" promptText="y" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
