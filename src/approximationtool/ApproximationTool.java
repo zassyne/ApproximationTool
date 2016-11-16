@@ -29,7 +29,7 @@ public class ApproximationTool extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
-        Axes axes = new Axes(
+        Axes axes = Axes.getInstance(
                 512, 400,
                 -10, 10, 1,
                 -8, 8, 1

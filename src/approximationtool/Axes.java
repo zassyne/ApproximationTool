@@ -20,8 +20,24 @@ class Axes extends Pane {
 
     private NumberAxis xAxis;
     private NumberAxis yAxis;
+    private static Axes axes = null;
 
-    public Axes(
+    public static Axes getInstance(int width, int height, double xLow, double xHi, double xTickUnit, double yLow, double yHi, double yTickUnit) {
+        if (axes == null) {
+            axes = new Axes(width, height, xLow, xHi, xTickUnit, yLow, yHi, yTickUnit);
+        }
+
+        return axes;
+    }
+
+    public static Axes getInstance() {
+        if (axes == null) {
+            axes = new Axes(512, 400, -10, 10, 1, -8, 8, 1);
+        }
+        return axes;
+    }
+
+    private Axes(
             int width, int height,
             double xLow, double xHi, double xTickUnit,
             double yLow, double yHi, double yTickUnit
