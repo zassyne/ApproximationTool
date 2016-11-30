@@ -28,7 +28,7 @@ public class ApproximationTool extends Application {
     public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-
+        
         Axes axes = Axes.getInstance(
                 512, 400,
                 -10, 10, 1,
@@ -45,10 +45,11 @@ public class ApproximationTool extends Application {
         
         //Plot plot = new Plot(points, -10, 10, 0.01, axes);
         Plot plot = new Plot(
-                x -> betas.a * x + betas.b,
+                x ->(float) betas.a * x + (float)betas.b,
                 -10, 10, 0.01,
                 axes
         );
+
         SplitPane splitPane = null;
 
         for(Node node : ((BorderPane) root).getChildren()) {
@@ -71,7 +72,7 @@ public class ApproximationTool extends Application {
         if(tableView != null) {
             
         }
-        
+       
         
         Scene scene = new Scene(root);
 

@@ -64,8 +64,9 @@
                               <HBox prefHeight="25.0" prefWidth="174.0">
                                  <children>
                                     <Label prefHeight="36.0" prefWidth="113.0" text="Order :" textAlignment="CENTER" />
-                                    <ChoiceBox prefHeight="31.0" prefWidth="155.0" value="First Order">
-                                        <items><FXCollections fx:factory="observableArrayList">
+                                    <ChoiceBox fx:id="orderBox" prefHeight="31.0" prefWidth="155.0" value="First Order">
+                                        <items>
+                                          <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="First Order" />
                                             <String fx:value="Second Order" />
                                         </FXCollections>
@@ -91,7 +92,9 @@
                         <TableView fx:id="tableView" editable="true" fixedCellSize="0.0" prefHeight="92.0" prefWidth="200.0">
                           <columns>
                               <TableColumn fx:id="Xs" prefWidth="104.0" text="X">
-                                  <cellValueFactory><PropertyValueFactory property="x" /></cellValueFactory>
+                                  <cellValueFactory>
+                                    <PropertyValueFactory property="x" />
+                                 </cellValueFactory>
                               </TableColumn>
                               <TableColumn fx:id="Ys" prefWidth="96.0" text="Y">
                                   <cellValueFactory>
@@ -110,7 +113,8 @@
                   <Button layoutX="131.0" layoutY="441.0" mnemonicParsing="false" onAction="#addPoint" prefHeight="31.0" prefWidth="94.0" text="Add Point" />
                   <TextField layoutX="23.0" layoutY="441.0" prefHeight="31.0" prefWidth="41.0" promptText="x" fx:id="xTextField" />
                   <TextField fx:id="yTextField" layoutX="81.0" layoutY="441.0" prefHeight="31.0" prefWidth="42.0" promptText="y" />
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
         </items>
       </SplitPane>
    </center>

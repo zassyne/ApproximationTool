@@ -31,13 +31,15 @@ class Axes extends Pane {
     }
 
     public static Axes getInstance() {
-        if (axes == null) {
-            axes = new Axes(512, 400, -10, 10, 1, -8, 8, 1);
-        }
-        return axes;
-    }
 
-    private Axes(
+            return new Axes(512, 400, -10, 10, 1, -10, 10, 1);
+
+    }
+    
+    public Axes() {
+       
+    }
+    public Axes(
             int width, int height,
             double xLow, double xHi, double xTickUnit,
             double yLow, double yHi, double yTickUnit

@@ -18,10 +18,8 @@ class Plot extends Pane {
         Path path = new Path();
 
         
-        for(int i = 0; i<points.length; i++) {
-            
-            path.getElements().add(new LineTo(mapX(points[i].getX(), axes), mapY(points[i].getY(), axes)) );
-
+        for (Point point : points) {
+            path.getElements().add(new LineTo(mapX(point.getX(), axes), mapY(point.getY(), axes)));
         }
         getChildren().setAll(axes, path);
     }
@@ -32,12 +30,11 @@ class Plot extends Pane {
         path.setStroke(Color.ORANGE.deriveColor(0, 1, 1, 0.6));
         path.setStrokeWidth(2);
 
-        path.setClip(new Rectangle(0, 0,axes.getPrefWidth(),axes.getPrefHeight()));
+        path.setClip(new Rectangle(0, 0,800,800));
         double x = xMin;
         double y = f.apply(x);
         
         path.getElements().add( new MoveTo(mapX(x, axes), mapY(y, axes)));
-
         x += xInc;
         while (x < xMax) {
             y = f.apply(x);
@@ -52,7 +49,7 @@ class Plot extends Pane {
         setPrefSize(axes.getPrefWidth(), axes.getPrefHeight());
         setMaxSize(Pane.USE_PREF_SIZE, Pane.USE_PREF_SIZE);
 
-        getChildren().setAll(axes, path); 
+        getChildren().addAll(axes, path); 
 
     }
 
